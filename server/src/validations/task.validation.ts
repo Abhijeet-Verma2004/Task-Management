@@ -6,7 +6,10 @@ const dateString = z
   .datetime()
   .optional()
   .nullable()
-  .transform((value) => (value ? new Date(value) : null));
+  .transform((value) => {
+    if (value === undefined) return undefined;
+    return value ? new Date(value) : null;
+  });
 
 export const taskIdSchema = z.object({
   params: z.object({ id: z.string().min(1) })
