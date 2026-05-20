@@ -30,7 +30,7 @@ export default function SignupPage() {
   const router = useRouter();
   const toast = useToast();
   const { setSession } = useAuthStore();
-  const form = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { name: "", email: "", password: "", role: "MEMBER" } });
+  const form = useForm<FormValues>({ resolver: zodResolver(schema), defaultValues: { name: "", email: "", password: "", role: "ADMIN" } });
   const selectedRole = form.watch("role");
 
   async function onSubmit(values: FormValues) {
@@ -60,8 +60,8 @@ export default function SignupPage() {
             <Field label="Password" error={form.formState.errors.password?.message}><Input type="password" {...form.register("password")} /></Field>
             <Field label="Account role" error={form.formState.errors.role?.message}>
               <Select {...form.register("role")}>
-                <option value="MEMBER">Member</option>
                 <option value="ADMIN">Admin</option>
+                <option value="MEMBER">Member</option>
               </Select>
             </Field>
             <RolePermissions selectedRole={selectedRole} compact />

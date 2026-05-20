@@ -69,8 +69,10 @@ CLIENT_URL="http://localhost:3000"
 Frontend variables:
 
 ```env
-NEXT_PUBLIC_API_URL="http://localhost:5000/api"
+NEXT_PUBLIC_API_URL="http://localhost:5000"
 ```
+
+`NEXT_PUBLIC_API_URL` can include or omit `/api`; the client normalizes it before making requests.
 
 ## Installation
 
@@ -170,7 +172,7 @@ Dashboard:
    - `JWT_EXPIRES_IN`
    - `CLIENT_URL`
 5. Deploy the `client` folder as a second Railway service.
-6. Set `NEXT_PUBLIC_API_URL` to your backend URL plus `/api`.
+6. Set `NEXT_PUBLIC_API_URL` to your backend root URL, for example `https://your-backend.onrender.com`.
 7. Run backend migration command:
 
 ```bash

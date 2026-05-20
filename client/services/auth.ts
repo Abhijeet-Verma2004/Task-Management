@@ -8,7 +8,7 @@ export async function signup(payload: {
   role: "ADMIN" | "MEMBER";
 }) {
   const { data } = await api.post<{ user: User; token: string }>(
-    "/api/auth/signup",
+    "/auth/signup",
     payload
   );
   return data;
@@ -19,7 +19,7 @@ export async function login(payload: {
   password: string;
 }) {
   const { data } = await api.post<{ user: User; token: string }>(
-    "/api/auth/login",
+    "/auth/login",
     payload
   );
   return data;
@@ -27,7 +27,7 @@ export async function login(payload: {
 
 export async function me() {
   const { data } = await api.get<{ user: User }>(
-    "/api/auth/me"
+    "/auth/me"
   );
   return data.user;
 }

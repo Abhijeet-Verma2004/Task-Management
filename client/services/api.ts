@@ -1,7 +1,10 @@
 import axios from "axios";
 
+const API_ROOT = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000";
+const normalizedApiRoot = API_ROOT.replace(/\/+$/, "").replace(/\/api$/, "");
+
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000/api"
+  baseURL: `${normalizedApiRoot}/api`
 });
 
 api.interceptors.request.use((config) => {
